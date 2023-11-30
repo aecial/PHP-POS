@@ -14,3 +14,10 @@ function selectInp(value) {
   }
   changeData();
 }
+
+function fetchVal(_button) {
+  let btnName = _button.dataset.value1;
+  let btnPrice = _button.dataset.value2;
+  console.log({ name: btnName, price: btnPrice });
+  alert(`${btnName}, ${btnPrice}`);
+}
