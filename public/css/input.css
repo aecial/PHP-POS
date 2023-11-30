@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .content-height {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 52px);
 }
 
 @layer utilities {
