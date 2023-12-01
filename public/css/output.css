@@ -999,7 +999,7 @@ video {
 }
 
 .content-height {
-  height: calc(100vh - 52px);
+  height: calc(100vh - 75px);
 }
 
 .odd\:bg-white:nth-child(odd) {

@@ -1,6 +1,6 @@
 <?php
         include("database.php");
-        $sql = "SELECT * FROM orders";
+        $sql = "SELECT * FROM orders ORDER BY date ASC";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) > 0) { // if may result
@@ -17,7 +17,7 @@
                     '.$row['price'].'
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                    <button onclick="deleteItem(this)" data-value1="'.$row['name'].'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                 </td>
             </tr>';
             }
