@@ -1,3 +1,14 @@
+<?php
+  /*
+    Checks if someone is logged in by looking for an Id
+    If it does not exist, users will be sent back to the login page
+
+  */
+  session_start();
+  if(empty($_SESSION['id'])) {
+    header("Location: index.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +19,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <?php include("./components/cashierNav.php"); ?>
+<?php 
+    if($_SESSION['role'] == "manager") {
+      include("./components/managerNav.php"); 
+    }
+    elseif($_SESSION['role'] == "admin") {
+      include("./components/adminNav.php"); 
+    }
+    else {
+      include("./components/cashierNav.php"); 
+    }
+  ?>
   <main class="bg-slate-600 content-height flex">
     <div class="content-height w-[60%] p-4 border-r-2 border-purple-500">
       <div class=" w-[100%] h-[100%] flex flex-col items-center p-2">

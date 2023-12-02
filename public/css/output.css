@@ -712,6 +712,10 @@ video {
   width: 100%;
 }
 
+.w-\[50\%\] {
+  width: 50%;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
