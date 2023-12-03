@@ -9,7 +9,8 @@
 </head>
 <body class="h-[100vh] flex justify-center items-center bg-slate-400">
 
-  <main class="h-[100vh] w-full flex justify-center items-center bg-slate-600">
+  <main class="h-[100vh] w-full flex flex-col justify-center items-center bg-slate-600">
+    <img class="rounded-full w-72 h-72" src="./public/assets/devFocuspurple.svg" alt="LOGO">
     <form action="login.php" method="post" class="flex flex-col justify-center w-[25%] h-[40%]">
     <div class="">
       <label for="default-input" class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">Email:</label>

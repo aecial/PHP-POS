@@ -1,5 +1,5 @@
 <nav class="h-[75px] flex justify-between items-center px-4 w-[100%] bg-slate-800 text-white">
-  <a href="pos.php"class="underline underline-offset-4">POS</a>
+  <a href="pos.php"class="underline underline-offset-4 flex items-center"><img class="rounded-full w-14 h-14" src="./public/assets/devFocuspurple.svg" alt="LOGO"> POS</a>
   <a href="addItem.php"class="underline underline-offset-4">ADD ITEM</a>
   <a href="updateItem.php"class="underline underline-offset-4"  >UPDATE ITEM</a>
   <form action="logout.php" method="POST">
