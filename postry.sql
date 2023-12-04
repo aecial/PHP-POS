@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Dec 01, 2023 at 03:43 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Dec 04, 2023 at 02:30 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,15 +31,16 @@ CREATE TABLE `drink` (
   `id` int(11) NOT NULL,
   `name` varchar(70) NOT NULL,
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `drink`
 --
 
 INSERT INTO `drink` (`id`, `name`, `price`) VALUES
-(1, 'Coke-1.5', 100),
-(2, 'Coke-Mismo', 15);
+(1, 'COKE-1.5', 100),
+(2, 'COKE-MIMSO', 15),
+(3, 'CERVEZA AGILA', 85);
 
 -- --------------------------------------------------------
 
@@ -51,7 +52,7 @@ CREATE TABLE `food` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `food`
@@ -60,7 +61,10 @@ CREATE TABLE `food` (
 INSERT INTO `food` (`id`, `name`, `price`) VALUES
 (1, 'FRIED ITIK', 285),
 (2, 'CRISPY PATA', 500),
-(3, 'DINAKDAKAN', 180);
+(3, 'DINAKDAKAN', 180),
+(4, 'SISIG', 180),
+(5, 'SHRIMP SINIGANG', 180),
+(7, 'buffalo wings', 180);
 
 -- --------------------------------------------------------
 
@@ -72,18 +76,8 @@ CREATE TABLE `orders` (
   `quantity` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`quantity`, `name`, `price`, `date`) VALUES
-(1, 'Coke-1.5', 100, '2023-12-01'),
-(4, 'CRISPY PATA', 2000, '2023-12-01'),
-(3, 'DINAKDAKAN', 540, '2023-12-01'),
-(5, 'FRIED ITIK', 1425, '2023-12-01');
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -95,14 +89,38 @@ CREATE TABLE `other` (
   `id` int(11) NOT NULL,
   `name` varchar(70) NOT NULL,
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `other`
 --
 
 INSERT INTO `other` (`id`, `name`, `price`) VALUES
-(1, 'Rice', 15);
+(1, 'RICE', 15),
+(2, 'GRAVY', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `role`) VALUES
+(1, 'admin@admin.com', '$2y$10$OxKGbUqln17RXm4Z56Wnse5F4UBXp2uYi21Log.K0nz9PzoQkwDDe', 'admin'),
+(2, 'manager@manager.com', '$2y$10$0n85JQCL/T7H0U2GA9EV6utlHLa0lTersEs..sJ1vc8vk44ohV4RG', 'manager'),
+(3, 'cashier@cashier.com', '$2y$10$1XQGh2gtXPI.L.wbK9pH7.auqbD/g2zHt/WtQttZARu7K3jRumbcu', 'cashier'),
+(4, 'dars@cashier.com', '$2y$10$iYfgglYdIuiKN8jsG5wrnOjzJ4Iud0xVQAk7kSJnOlHuAAvq968CG', 'cashier');
 
 --
 -- Indexes for dumped tables
@@ -133,6 +151,13 @@ ALTER TABLE `other`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -140,19 +165,25 @@ ALTER TABLE `other`
 -- AUTO_INCREMENT for table `drink`
 --
 ALTER TABLE `drink`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `other`
 --
 ALTER TABLE `other`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
