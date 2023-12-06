@@ -25,7 +25,7 @@
             header("Location: addItem.php");
           }
           else {
-            header("Location: addEmployee.php");
+            header("Location: dashboard.php");
           }       
         }
         else {
