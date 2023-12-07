@@ -71,3 +71,11 @@ function removeOrders() {
   fetchOrders();
   getSum();
 }
+function done() {
+  let total = Number(document.getElementById("text-sum").innerText);
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "done.php", false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(`total=${total}`);
+  removeOrders();
+}
