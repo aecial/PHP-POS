@@ -11,7 +11,7 @@
     <?php include("./components/adminNav.php"); ?>
     <main class="bg-slate-600 content-height justify-center items-center flex flex-col">
     <h1 class="text-4xl text-white mb-4">Monthly Gross Sales</h1>
-    <div class="bg-black text-white w-[60%] h-[70%]">
+    <div class=" bg-slate-800 text-white w-[60%] h-[70%]">
         
         <canvas id="myChart"></canvas>
     </div>
@@ -47,6 +47,7 @@
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
             type: 'bar',
+            borderColor: '#36A2EB',
             data: {
             labels: [<?php for($i = 0; $i <= count($dates)-1; $i++) {
                 echo "'".$dates[$i]."',";
@@ -56,7 +57,7 @@
                 data: [<?php for($i = 0; $i <= count($prices)-1; $i++) {
                 echo "'".$prices[$i]."',";
             } ?>],
-                borderWidth: 1
+                borderWidth: 1,
             }]
             },
             options: {
