@@ -8,7 +8,7 @@
   if(empty($_SESSION['id'])) {
     header("Location: index.php");
   }
-  if($_SESSION['role'] == "cashier") {
+  if($_SESSION['role'] == "cashier" || $_SESSION['role'] == "manager") {
       header("Location: pos.php?".$_SESSION['role']."");    
   }
 ?>
