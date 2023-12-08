@@ -11,7 +11,7 @@
     <?php include("./components/adminNav.php"); ?>
     <main class="bg-slate-600 content-height justify-center items-center flex flex-col">
     <h1 class="text-4xl text-white mb-4">Monthly Gross Sales</h1>
-    <div class="bg-white w-[60%] h-[70%]">
+    <div class="bg-black text-white w-[60%] h-[70%]">
         
         <canvas id="myChart"></canvas>
     </div>
@@ -21,15 +21,25 @@
     <?php
      include("database.php");
      $prices = array();
-     $sql = "SELECT price FROM orders";
+     $sql = "SELECT SUM(total) FROM transactions GROUP BY date";
      $result = mysqli_query($conn, $sql);
      if(mysqli_num_rows($result) > 0) {
        while ($row = mysqli_fetch_assoc($result)) {
-         $price = $row['price'];
+         $price = $row['SUM(total)'];
          array_push($prices, $price);
        }
        print_r($prices);
        echo count($prices);
+     }
+     include("database.php");
+     $dates = array();
+     $sqlDate = "SELECT DISTINCT date FROM transactions";
+     $resultDate = mysqli_query($conn, $sqlDate);
+     if(mysqli_num_rows($resultDate) > 0) {
+       while ($row = mysqli_fetch_assoc($resultDate)) {
+         $date = $row['date'];
+         array_push($dates, $date);
+       }
      }
      
     ?>
@@ -38,8 +48,8 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-            labels: [<?php for($i = 1; $i <= 31; $i++) {
-                echo "'".$i."',";
+            labels: [<?php for($i = 0; $i <= count($dates)-1; $i++) {
+                echo "'".$dates[$i]."',";
             } ?>],
             datasets: [{
                 label: 'DECEMBER GROSS SALES',
