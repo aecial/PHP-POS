@@ -21,7 +21,7 @@
     <?php
      include("database.php");
      $prices = array();
-     $sql = "SELECT SUM(total) FROM transactions GROUP BY date";
+     $sql = "SELECT SUM(total) FROM transactions GROUP BY date ORDER BY date DESC";
      $result = mysqli_query($conn, $sql);
      if(mysqli_num_rows($result) > 0) {
        while ($row = mysqli_fetch_assoc($result)) {
@@ -33,7 +33,7 @@
      }
      include("database.php");
      $dates = array();
-     $sqlDate = "SELECT DISTINCT date FROM transactions";
+     $sqlDate = "SELECT DISTINCT date FROM transactions ORDER BY date DESC";
      $resultDate = mysqli_query($conn, $sqlDate);
      if(mysqli_num_rows($resultDate) > 0) {
        while ($row = mysqli_fetch_assoc($resultDate)) {
