@@ -4,7 +4,12 @@
     $name = $_POST['name'];
     $price = $_POST['price'];
     $sql = "INSERT INTO $type(name, price) VALUES ('$name', $price)";
-    $result = mysqli_query($conn, $sql);
-    header("Location: pos.php");
+    try {
+        $result = mysqli_query($conn, $sql);
+        header("Location: pos.php?status=success");
+    } catch (error) {
+        header("Location: pos.php?status=error");
+    }
+    
 
 ?>

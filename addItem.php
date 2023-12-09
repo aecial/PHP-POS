@@ -20,6 +20,8 @@
   <title>Add Item</title>
   <link rel="stylesheet" href="./public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.min.css">
+  <link href="toastr.css" rel="stylesheet"/>
 </head>
 <body>
   <?php 
@@ -50,6 +52,46 @@
         </span>
       </button>
     </form>
+    <button id="show-btn">SHOW</button>
   </main>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script>
+     function notifCall() {
+      toastr.success("<p class='text-lg'>You have added a new Item!</p>");
+     }
+     function notifCallError() {
+      toastr.error("<p class='text-lg'>Encountered an Error. Please Try Again</p>");
+     }
+      toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": true,
+      "onclick": null,
+      "showDuration": "100",
+      "hideDuration": "1",
+      "timeOut": "2000",
+      "extendedTimeOut": "3000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+  </script>
+  <?php
+    if(isset($_GET['status'])){
+      if($_GET['status'] == 'success') {
+        echo '<script>notifCall();</script>';
+      } else {
+        echo '<script>notifCallError();</script>';
+      }
+          
+    }else{
+      echo "Url has no user";
+    }
+  ?>
 </body>
 </html>
