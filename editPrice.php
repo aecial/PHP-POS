@@ -5,5 +5,5 @@
   $newPrice = $_POST['price'];
   $sqlNew = "UPDATE $table SET price='$newPrice' WHERE id=$id";
   $result = mysqli_query($conn, $sqlNew);
-  header("Location: pos.php");
+  header("Location: updateItem.php?status=success");
 ?>

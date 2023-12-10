@@ -20,7 +20,7 @@
   <title>Add Item</title>
   <link rel="stylesheet" href="./public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.min.css">
+  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
   <link href="toastr.css" rel="stylesheet"/>
 </head>
 <body>
@@ -88,8 +88,6 @@
         echo '<script>notifCallError();</script>';
       }
           
-    }else{
-      echo "Url has no user";
     }
   ?>
 </body>

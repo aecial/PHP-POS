@@ -165,8 +165,6 @@
         echo '<script>notifCallError();</script>';
       }
           
-    }else{
-      echo "Url has no user";
     }
   ?>
 </body>

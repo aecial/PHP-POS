@@ -26,7 +26,7 @@
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users(email, password, role) VALUES ('$email','$hash', '$role');";
         $result = mysqli_query($conn, $sql);
-        header("Location: index.php?registerSuccess");
+        header("Location: addEmployee.php?status=success");
       }
       else {
         echo '<div
