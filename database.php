@@ -12,5 +12,4 @@ try {
     echo '<h1>Could Not Connect</h1>';
 }
 
-
 ?>

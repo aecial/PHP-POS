@@ -9,39 +9,17 @@
     $sqlemail = "SELECT * FROM users where email='{$email}';";
     $resultemail = mysqli_query($conn, $sqlemail);
     if(mysqli_num_rows($resultemail) > 0) {
-      echo '<div
-      class="alert alert-danger alert-dismissible fade show"
-      role="alert"
-    >
-      <strong>Email Taken!</strong>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>';
+      header("Location: addEmployee.php?status=error");
     } else {
-      if($password === $conf_password) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users(email, password, role) VALUES ('$email','$hash', '$role');";
-        $result = mysqli_query($conn, $sql);
-        header("Location: addEmployee.php?status=success");
-      }
-      else {
-        echo '<div
-        class="alert alert-danger alert-dismissible fade show"
-        role="alert"
-      >
-        <strong>Passwords Do not match!</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>';
-      }
+        if($password === $conf_password) {
+          $hash = password_hash($password, PASSWORD_DEFAULT);
+          $sql = "INSERT INTO users(email, password, role) VALUES ('$email','$hash', '$role');";
+          $result = mysqli_query($conn, $sql);
+          header("Location: addEmployee.php?status=success");
+        }
+        else {
+          header("Location: addEmployee.php?status=error");
+        }
     }
   }
 ?>

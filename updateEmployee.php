@@ -25,13 +25,15 @@
   <title>Update Employee</title>
   <link rel="stylesheet" href="./public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
+  <link href="toastr.css" rel="stylesheet"/>
 </head>
 <body>
   <?php include("./components/adminNav.php"); ?>
   <main class="bg-slate-600 content-height justify-center items-center flex">
   <form action="updEmp.php" method="POST">
   <label for="default-input" class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">Account:</label>
-  <select name="userId" id="data-div" onchange="updInp(value)" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+  <select name="userId" id="data-div" onchange="updInp(value)" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
 
     </select>
   
@@ -60,5 +62,42 @@
   </form>
   </main>
   <script src="./public/js/updateEmployee.js"></script>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script>
+     function notifCall() {
+      toastr.success("<p class='text-lg'>You have updated an Employee!</p>");
+     }
+     function notifCallError() {
+      toastr.error("<p class='text-lg'>Encountered an Error. Please Try Again</p>");
+     }
+      toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": true,
+      "onclick": null,
+      "showDuration": "100",
+      "hideDuration": "1",
+      "timeOut": "2000",
+      "extendedTimeOut": "3000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+  </script>
+  <?php
+    if(isset($_GET['status'])){
+      if($_GET['status'] == 'success') {
+        echo '<script>notifCall();</script>';
+      } else {
+        echo '<script>notifCallError();</script>';
+      }
+          
+    }
+  ?>
 </body>
 </html>
