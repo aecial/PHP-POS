@@ -15,21 +15,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POS</title>
-  <link rel="stylesheet" href="./public/css/output.css">
+  <link rel="stylesheet" href="../public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
-  <link href="toastr.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../node_modules/toastr/build/toastr.css">
 </head>
 <body>
 <?php 
     if($_SESSION['role'] == "manager") {
-      include("./components/managerNav.php"); 
+      include("../components/managerNav.php"); 
     }
     elseif($_SESSION['role'] == "admin") {
-      include("./components/adminNav.php"); 
+      include("../components/adminNav.php"); 
     }
     else {
-      include("./components/cashierNav.php"); 
+      include("../components/cashierNav.php"); 
     }
   ?>
   <main class="bg-slate-600 content-height flex">
@@ -132,9 +131,9 @@
       </div>
     </div>
   </main>
-  <script src="./public/js/pos.js"></script>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script src="../public/js/pos.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/toastr/build/toastr.min.js"></script>
   <script>
      function notifCall() {
       toastr.success("<p class='text-lg'>You have added a new Item!</p>");

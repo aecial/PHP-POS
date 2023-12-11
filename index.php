@@ -11,7 +11,7 @@
 
   <main class="h-[100vh] w-full flex flex-col justify-center items-center bg-slate-600">
     <img class="rounded-full w-72 h-72" src="./public/assets/devFocuspurple.svg" alt="LOGO">
-    <form action="login.php" method="post" class="flex flex-col justify-center w-[25%] h-[40%]">
+    <form action="./logic/login.php" method="post" class="flex flex-col justify-center w-[25%] h-[40%]">
     <div class="">
       <label for="default-input" class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">Email:</label>
       <input type="email" name="email" id="emailInp" id="default-input" class="bg-gray  -50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 text-2xl text-white">

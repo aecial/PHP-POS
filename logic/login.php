@@ -6,7 +6,7 @@
     else, the users will be redirected back to the login page
   */
   if(isset($_POST['login'])) {
-    include("database.php");
+    include("../logic/database.php");
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -19,13 +19,13 @@
           $_SESSION['id'] = $row['id'];
           $_SESSION['role'] = $row['role'];
           if($row['role'] === "cashier") {
-            header("Location: pos.php");
+            header("Location: ../pages/pos.php");
           } 
           elseif ($row['role'] === "manager") {
-            header("Location: addItem.php");
+            header("Location: ./pages/addItem.php");
           }
           else {
-            header("Location: dashboard.php");
+            header("Location: ./pages/dashboard.php");
           }       
         }
         else {

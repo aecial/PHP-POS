@@ -4,6 +4,6 @@
   if(isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: index.php?logout_success");
+    header("Location: ../index.php?logout_success");
   }
 ?>
