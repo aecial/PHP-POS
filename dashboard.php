@@ -10,7 +10,17 @@
 <body>
     <?php include("./components/adminNav.php"); ?>
     <main class="bg-slate-600 content-height justify-center items-center flex flex-col">
-    <h1 class="text-4xl text-white mb-4">Monthly Gross Sales</h1>
+    <?php
+        include("database.php");
+        $sqltot = "SELECT SUM(total) FROM transactions";
+        $resultot = mysqli_query($conn, $sqltot);
+        if(mysqli_num_rows($resultot) > 0) {
+            while ($row = mysqli_fetch_assoc($resultot)) {
+              $totalMonthly = $row['SUM(total)'];
+            }
+        }
+    ?>
+    <h1 class="text-4xl text-white mb-4">Monthly Gross Sales: ₱<?php echo  $totalMonthly ?></h1>
     <div class=" bg-slate-800 text-white w-[60%] h-[70%]">
         
         <canvas id="myChart"></canvas>
@@ -21,7 +31,7 @@
     <?php
      include("database.php");
      $prices = array();
-     $sql = "SELECT SUM(total) FROM transactions GROUP BY date ORDER BY date DESC";
+     $sql = "SELECT SUM(total) FROM transactions GROUP BY date ORDER BY date";
      $result = mysqli_query($conn, $sql);
      if(mysqli_num_rows($result) > 0) {
        while ($row = mysqli_fetch_assoc($result)) {
@@ -33,7 +43,7 @@
      }
      include("database.php");
      $dates = array();
-     $sqlDate = "SELECT DISTINCT date FROM transactions ORDER BY date DESC";
+     $sqlDate = "SELECT DISTINCT date FROM transactions ORDER BY date ";
      $resultDate = mysqli_query($conn, $sqlDate);
      if(mysqli_num_rows($resultDate) > 0) {
        while ($row = mysqli_fetch_assoc($resultDate)) {
@@ -61,11 +71,14 @@
             }]
             },
             options: {
-            scales: {
-                y: {
-                beginAtZero: false
+                scales: {
+                    y: {
+                    beginAtZero: false,
+                    grid: {
+                        color: 'rgba(180, 180, 180, 0.3)'
+                    }
+                    }
                 }
-            }
             }
         });
     </script>
