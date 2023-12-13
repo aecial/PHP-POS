@@ -6,9 +6,9 @@
     $sql = "INSERT INTO $type(name, price) VALUES ('$name', $price)";
     try {
         $result = mysqli_query($conn, $sql);
-        header("Location: pos.php?status=success");
+        header("Location: ../pages/pos.php?status=success");
     } catch (error) {
-        header("Location: pos.php?status=error");
+        header("Location: ../pages/pos.php?status=error");
     }
     
 

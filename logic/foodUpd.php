@@ -1,5 +1,5 @@
 <?php
-    include("database.php");
+    include("../logic/database.php");
     $sql = "SELECT * FROM food";
     $result = mysqli_query($conn, $sql);
 

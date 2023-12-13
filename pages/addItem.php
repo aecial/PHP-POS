@@ -6,10 +6,10 @@
   */
   session_start();
   if(empty($_SESSION['id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
   }
   if($_SESSION['role'] == "cashier") {
-      header("Location: pos.php?".$_SESSION['role']."");    
+      header("Location: ../pages/pos.php");    
   }
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Item</title>
-  <link rel="stylesheet" href="./public/css/output.css">
+  <link rel="stylesheet" href="../public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
   <link href="toastr.css" rel="stylesheet"/>
@@ -26,13 +26,13 @@
 <body>
   <?php 
     if($_SESSION['role'] == "manager") {
-      include("./components/managerNav.php"); 
+      include("../components/managerNav.php"); 
     } else {
-      include("./components/adminNav.php"); 
+      include("../components/adminNav.php"); 
     }
   ?>
   <main class="bg-slate-600 content-height flex justify-center items-center">
-    <form action="newItem.php" method="POST">
+    <form action="../logic/newItem.php" method="POST">
     <select name="type" id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option value="food">FOOD</option>
       <option value="drink">DRINK</option>
@@ -53,8 +53,8 @@
       </button>
     </form>
   </main>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/toastr/build/toastr.min.js"></script>
   <script>
      function notifCall() {
       toastr.success("<p class='text-lg'>You have added a new Item!</p>");

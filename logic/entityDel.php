@@ -5,5 +5,5 @@
 
   $sqlNew = "DELETE FROM $table WHERE id=$id";
   $result = mysqli_query($conn, $sqlNew);
-  header("Location: deleteEntity.php?status=success");
+  header("Location: ../pages/deleteEntity.php?status=success");
 ?>

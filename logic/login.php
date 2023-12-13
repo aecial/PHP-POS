@@ -22,10 +22,10 @@
             header("Location: ../pages/pos.php");
           } 
           elseif ($row['role'] === "manager") {
-            header("Location: ./pages/addItem.php");
+            header("Location: ../pages/addItem.php");
           }
           else {
-            header("Location: ./pages/dashboard.php");
+            header("Location: ../pages/dashboard.php");
           }       
         }
         else {

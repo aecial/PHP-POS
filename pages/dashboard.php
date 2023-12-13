@@ -1,17 +1,31 @@
+<?php
+  /*
+    Checks if someone is logged in by looking for an Id
+    If it does not exist, users will be sent back to the login page
+
+  */
+  session_start();
+  if(empty($_SESSION['id'])) {
+    header("Location: ../index.php");
+  }
+  if($_SESSION['role'] == "cashier" || $_SESSION['role'] == "manager") {
+      header("Location: pos.php?".$_SESSION['role']."");    
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./public/css/output.css">
+    <link rel="stylesheet" href="../public/css/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <?php include("./components/adminNav.php"); ?>
+    <?php include("../components/adminNav.php"); ?>
     <main class="bg-slate-600 content-height justify-center items-center flex flex-col">
     <?php
-        include("database.php");
+        include("../logic/database.php");
         $sqltot = "SELECT SUM(total) FROM transactions";
         $resultot = mysqli_query($conn, $sqltot);
         if(mysqli_num_rows($resultot) > 0) {
@@ -29,7 +43,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <?php
-     include("database.php");
+     include("../logic/database.php");
      $prices = array();
      $sql = "SELECT SUM(total) FROM transactions GROUP BY date ORDER BY date";
      $result = mysqli_query($conn, $sql);
@@ -41,7 +55,7 @@
        print_r($prices);
        echo count($prices);
      }
-     include("database.php");
+     include("../logic/database.php");
      $dates = array();
      $sqlDate = "SELECT DISTINCT date FROM transactions ORDER BY date ";
      $resultDate = mysqli_query($conn, $sqlDate);
