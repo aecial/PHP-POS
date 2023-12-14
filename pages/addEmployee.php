@@ -6,13 +6,13 @@
   */
   session_start();
   if(empty($_SESSION['id'])) {
-    header("Location: index.php");
+    header("Location: ../pages/index.php");
   }
   if($_SESSION['role'] != "admin") {
     if($_SESSION['role'] == "cashier") {
-      header("Location: pos.php");
+      header("Location: ../pages/pos.php");
     } else {
-      header("Location: addItem.php");
+      header("Location: ../pages/addItem.php");
     }
     
   }
@@ -23,15 +23,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Employee</title>
-  <link rel="stylesheet" href="./public/css/output.css">
+  <link rel="stylesheet" href="../public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
+  <link rel="stylesheet" href="../node_modules/toastr/build/toastr.css">
   <link href="toastr.css" rel="stylesheet"/>
 </head>
 <body>
-  <?php include("./components/adminNav.php"); ?>
+  <?php include("../components/adminNav.php"); ?>
   <main class="bg-slate-600 content-height justify-center items-center flex">
-  <form action="newEmployee.php" method="POST">
+  <form action="../logic/newEmployee.php" method="POST">
   <label for="default-input" class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">Account Type:</label>
   <select name="role" id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option value="cashier">CASHIER</option>
@@ -65,8 +65,8 @@
     <button type="submit" name="register">REGISTER</button> -->
   </form>
   </main>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/toastr/build/toastr.min.js"></script>
   <script>
      function notifCall() {
       toastr.success("<p class='text-lg'>You have added a new Employee!</p>");

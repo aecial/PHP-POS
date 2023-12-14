@@ -9,16 +9,16 @@
     $sqlemail = "SELECT * FROM users where email='{$email}';";
     $resultemail = mysqli_query($conn, $sqlemail);
     if(mysqli_num_rows($resultemail) > 0) {
-      header("Location: addEmployee.php?status=error");
+      header("Location: ../pages/addEmployee.php?status=error");
     } else {
         if($password === $conf_password) {
           $hash = password_hash($password, PASSWORD_DEFAULT);
           $sql = "INSERT INTO users(email, password, role) VALUES ('$email','$hash', '$role');";
           $result = mysqli_query($conn, $sql);
-          header("Location: addEmployee.php?status=success");
+          header("Location: ../pages/addEmployee.php?status=success");
         }
         else {
-          header("Location: addEmployee.php?status=error");
+          header("Location: ../pages/addEmployee.php?status=error");
         }
     }
   }
