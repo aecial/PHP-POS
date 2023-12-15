@@ -7,7 +7,7 @@
     $hash = password_hash($newPass, PASSWORD_DEFAULT);
     $sqlNew = "UPDATE users SET password='$hash' WHERE id=$userId";
     $result = mysqli_query($conn, $sqlNew);
-    header("Location: updateEmployee.php?status=success");
+    header("Location: ../pages/updateEmployee.php?status=success");
   }
   
   

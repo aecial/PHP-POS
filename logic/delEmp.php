@@ -4,9 +4,9 @@
     $userId = $_POST['userId'];
     $sql = "DELETE FROM users WHERE id=$userId";
     $result = mysqli_query($conn, $sql);
-    header("Location: deleteEmployee.php?status=success");
+    header("Location: ../pages/deleteEmployee.php?status=success");
   } catch (error) {
-    header("Location: deleteEmployee.php?status=error");
+    header("Location: ../pages/deleteEmployee.php?status=error");
   }
 
   

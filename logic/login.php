@@ -29,13 +29,13 @@
           }       
         }
         else {
-          header("Location: index.php?no match");
+          header("Location: ../index.php?no match");
         }
       }
     }
   }
   else {
-      header("Location: index.php?UserNotFound");
+      header("Location: ../index.php?UserNotFound");
     }
     mysqli_close($conn);
 ?>

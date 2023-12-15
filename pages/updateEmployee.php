@@ -6,13 +6,13 @@
   */
   session_start();
   if(empty($_SESSION['id'])) {
-    header("Location: index.php");
+    header("Location: ../pages/index.php");
   }
   if($_SESSION['role'] != "admin") {
     if($_SESSION['role'] == "cashier") {
-      header("Location: pos.php");
+      header("Location: ../pages/pos.php");
     } else {
-      header("Location: addItem.php");
+      header("Location: ../pages/addItem.php");
     }
     
   }
@@ -23,15 +23,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Update Employee</title>
-  <link rel="stylesheet" href="./public/css/output.css">
+  <link rel="stylesheet" href="../public/css/output.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
+  <link rel="stylesheet" href="../node_modules/toastr/build/toastr.css">
   <link href="toastr.css" rel="stylesheet"/>
 </head>
 <body>
-  <?php include("./components/adminNav.php"); ?>
+  <?php include("../components/adminNav.php"); ?>
   <main class="bg-slate-600 content-height justify-center items-center flex">
-  <form action="updEmp.php" method="POST">
+  <form action="../logic/updEmp.php" method="POST">
   <label for="default-input" class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">Account:</label>
   <select name="userId" id="data-div" onchange="updInp(value)" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
 
@@ -50,20 +50,11 @@
           UPDATE
         </span>
       </button>
-    <!-- <input type="email" name="email" id="email">
-    <input type="password" name="password" id="password">
-    <input type="password" name="conf_password" id="conf_password">
-    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-    <select name="role" id="roles" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option value="cashier">CASHIER</option>
-      <option value="manager">MANAGER</option>
-    </select>
-    <button type="submit" name="register">REGISTER</button> -->
   </form>
   </main>
-  <script src="./public/js/updateEmployee.js"></script>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+  <script src="../public/js/updateEmployee.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/toastr/build/toastr.min.js"></script>
   <script>
      function notifCall() {
       toastr.success("<p class='text-lg'>You have updated an Employee!</p>");
