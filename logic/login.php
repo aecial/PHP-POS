@@ -2,11 +2,11 @@
   session_start();
   /*
     check if the email is existing in the database, if valid
-    the user's credential will be assigned to a SESSION superglobal variable and be relocated to the home page
+    the user's credential will be assigned to a SESSION superglobal variable and be relocated to the desginated page for the role
     else, the users will be redirected back to the login page
   */
   if(isset($_POST['login'])) {
-    include("../logic/database.php");
+    include("database.php");
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -29,13 +29,14 @@
           }       
         }
         else {
-          header("Location: ../index.php?no match");
+          header("Location: ../index.php?status=notMatch");
         }
       }
     }
-  }
-  else {
-      header("Location: ../index.php?UserNotFound");
+    else {
+      header("Location: ../index.php?status=undefined");
     }
+  }
+ 
     mysqli_close($conn);
 ?>
